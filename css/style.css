@@ -8,12 +8,105 @@
 
 /* Tipografía */
 @font-face {
-  font-family: "";
-  src: url("") format("woff2"), url("") format("woff");
+    font-family: "";
+    src: url("") format("woff2"), url("") format("woff");
 }
 
 /* ******************************** */
+html {
+    font-size: 16px;
+    color: #fff;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
 
-/* Colores */
+/* VARIABLES */
+:root {
+    --colorfondo: #d83838;
+    --colorheader: #5f1515;
+    --degradado: linear-gradient(to top, #453a94 0%, var(--colorfondo) 70%, var(--colorfondo) 100%)
+}
 
-/* ******************************** */
+body {
+    font-family: "Roboto", sans-serif;
+    background-image: var(--degradado)
+}
+
+/* HEADER */
+header {
+    padding: 0 80px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--colorheader);
+
+    & .header__logo {
+        font-size: 40px;
+    }
+
+    & .header__nav {
+        display: flex;
+        align-items: end;
+        gap: 20px;
+
+        & a:hover,
+        a.activo {
+            transition: 0.5s;
+            border-bottom: 20px solid var(--colorfondo);
+        }
+    }
+}
+
+/* BANNER */
+.banner {
+    border-right: 50px solid var(--colorheader);
+    border-left: 50px solid var(--colorheader);
+    border-bottom: 50px solid var(--colorheader);
+    width: 1366px;
+    height: 500px;
+    margin: 0 auto;
+    background: url(../img/desktop/banner.avif) no-repeat center center;
+}
+
+.flecha {
+    position: fixed;
+    bottom: 0;
+    left: calc(50vw - 40px);
+
+    /* llamar a la animación */
+    animation: girar 5s linear infinite;
+}
+
+.contenido__articulo {
+    width: 1366px;
+    font-size: 18px;
+    margin: 50px auto;
+    columns: 2;
+    text-align: justify;
+    column-gap: 200px;
+
+    /* Selección del Texto */
+    &::selection {
+        color: rgb(255, 0, 0);
+        background-color: #ffffff;
+    }
+    /* Letra CAPITAL */
+    &::first-letter {
+        font-size: 5em;
+        font-weight: 900;
+        line-height: 0.5;
+    }
+}
+
+
+/* animación de el svg girando en circulo */
+@keyframes girar {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
